@@ -3,11 +3,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.ContactFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Contact" />
+        android:layout_margin="16dp">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tfCustomerSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@id/btnSeach"
+            app:layout_constraintStart_toStartOf="@+id/mainLayout"
+            app:layout_constraintTop_toTopOf="@id/mainLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiCustomerSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Pet or Owner Name"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/btnSeach"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/ic_seach"
+            app:layout_constraintBottom_toBottomOf="@+id/tfCustomerSearch"
+            app:layout_constraintEnd_toEndOf="@+id/mainLayout"
+            app:layout_constraintStart_toEndOf="@+id/tfCustomerSearch"
+            app:layout_constraintTop_toTopOf="@+id/tfCustomerSearch"
+            android:backgroundTint="@android:color/transparent"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCustomer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tfCustomerSearch"
+            tools:listitem="@layout/recycler_view_item" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/rvCustomer"
+            app:layout_constraintBottom_toBottomOf="@id/rvCustomer"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="12dp"
+            android:src="@drawable/ic_add"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

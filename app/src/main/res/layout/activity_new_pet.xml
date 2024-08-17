@@ -108,7 +108,8 @@
                 android:id="@+id/rbSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Small" />
+                android:text="Small"
+                android:checked="true"/>
 
             <RadioButton
                 android:id="@+id/rbMedium"
@@ -152,7 +153,8 @@
                 android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female" />
+                android:text="Female"
+                android:checked="true"/>
 
             <RadioButton
                 android:id="@+id/rbMale"
@@ -220,6 +222,7 @@
             app:layout_constraintTop_toBottomOf="@id/tfOwnerPhone" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_back"

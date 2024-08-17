@@ -14,7 +14,7 @@ import kotlin.concurrent.Volatile
 )
 abstract class PetDatabase:RoomDatabase() {
 
-    abstract val petDao:PetDao
+    abstract val getPetDao:PetDao
 
 
     companion object {

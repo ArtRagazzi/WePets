@@ -1,5 +1,6 @@
 package com.example.wepets.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,10 +20,13 @@ class ContactFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        binding = FragmentContactBinding.inflate(inflater, container, false)
+
+        binding.fabAdd.setOnClickListener {
+            startActivity(Intent(context,NewPetActivity::class.java))
+        }
 
 
-
-        binding = FragmentContactBinding.inflate(inflater, container,false)
         return binding.root
     }
 
