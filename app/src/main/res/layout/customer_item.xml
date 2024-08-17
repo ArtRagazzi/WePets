@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/txtPetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+        app:layout_constraintStart_toEndOf="@+id/ivProfile"
+        app:layout_constraintTop_toTopOf="@+id/ivProfile"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="Nina" />
+
+    <TextView
+        android:id="@+id/txtOwnerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_person"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProfile"
+        app:layout_constraintStart_toStartOf="@+id/txtPetName"
+        app:layout_constraintTop_toBottomOf="@+id/txtPetName"
+        tools:text="Artur Oliveira" />
+
+    <TextView
+        android:id="@+id/txtPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_phone"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPetName"
+        app:layout_constraintEnd_toStartOf="@+id/ivPetSex"
+        app:layout_constraintStart_toEndOf="@+id/txtPetName"
+        app:layout_constraintTop_toTopOf="@+id/txtPetName"
+        tools:text="19999913999" />
+
+    <ImageView
+        android:id="@+id/ivPetSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPetName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_female"
+        android:layout_marginEnd="14dp"/>
+
+    <TextView
+        android:id="@+id/txtPetBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_pet"
+        app:layout_constraintBottom_toBottomOf="@+id/txtOwnerName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/txtOwnerName"
+        app:layout_constraintTop_toTopOf="@+id/txtOwnerName"
+        tools:text="Vira Lata" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
