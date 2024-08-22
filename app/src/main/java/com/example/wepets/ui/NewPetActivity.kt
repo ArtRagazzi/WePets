@@ -47,6 +47,8 @@ class NewPetActivity : AppCompatActivity() {
             insets
         }
 
+        setupToolbar()
+
         binding.btnInsert.setOnClickListener {
             if(checkFields()){
                 insertPet()
@@ -54,9 +56,7 @@ class NewPetActivity : AppCompatActivity() {
 
         }
 
-        binding.fabBack.setOnClickListener {
-            finish()
-        }
+
     }
 
 
@@ -122,5 +122,19 @@ class NewPetActivity : AppCompatActivity() {
             }
             return false
         }
+    }
+
+
+    fun setupToolbar(){
+        // Configurar a Toolbar como a ActionBar da Activity
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        // Habilitar a seta para voltar
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
+
+        // Definir o título da Activity na Toolbar
+        supportActionBar?.title = "Register New Pet"
     }
 }

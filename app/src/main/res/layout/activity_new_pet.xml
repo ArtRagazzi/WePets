@@ -3,15 +3,15 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/main">
+    android:layout_height="match_parent">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/main"
         app:layout_constraintEnd_toEndOf="@+id/main"
         app:layout_constraintHorizontal_bias="0.5"
@@ -20,34 +20,38 @@
         app:layout_constraintVertical_bias="0.5"
         tools:context=".ui.NewPetActivity">
 
-
-        <TextView
-            android:id="@+id/txtNewPet"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pet Information"
-            android:textSize="28dp"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:titleTextColor="@android:color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
 
+            />
 
         <EditText
             android:id="@+id/tiImageUrl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
             android:hint="Image URL"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtNewPet" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tfPetName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -66,6 +70,7 @@
             android:id="@+id/tfPetBreed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -85,6 +90,7 @@
             android:id="@+id/txtSize"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:text="Size"
             android:textSize="20dp"
@@ -97,6 +103,7 @@
             android:id="@+id/rgSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -108,8 +115,8 @@
                 android:id="@+id/rbSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Small"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="Small" />
 
             <RadioButton
                 android:id="@+id/rbMedium"
@@ -130,6 +137,7 @@
             android:id="@+id/txtSex"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:text="Sex"
             android:textSize="20dp"
@@ -142,6 +150,7 @@
             android:id="@+id/rgSex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -153,8 +162,8 @@
                 android:id="@+id/rbFemale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Female"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="Female" />
 
             <RadioButton
                 android:id="@+id/rbMale"
@@ -168,6 +177,7 @@
             android:id="@+id/txtOwnerInfo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
             android:text="Owner Information"
             android:textSize="28dp"
@@ -181,6 +191,7 @@
             android:id="@+id/tfOwnerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -199,6 +210,7 @@
             android:id="@+id/tfOwnerPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -217,23 +229,13 @@
             android:id="@+id/btnInsert"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp"
             android:text="Insert"
-            app:layout_constraintTop_toBottomOf="@id/tfOwnerPhone" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
-            android:contentDescription="Undo"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnInsert"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"/>
+            app:layout_constraintTop_toBottomOf="@id/tfOwnerPhone" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

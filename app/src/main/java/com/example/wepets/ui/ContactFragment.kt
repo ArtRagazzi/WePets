@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wepets.adapter.CustomerAdapter
 import com.example.wepets.databinding.FragmentContactBinding
 import com.example.wepets.db.dao.PetDao
@@ -14,6 +16,7 @@ import com.example.wepets.model.Pet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ContactFragment : Fragment() {
 
@@ -44,16 +47,24 @@ class ContactFragment : Fragment() {
 
         //Configurando RecyclerView
 
-        var customerList:List<Pet> = emptyList()
-
         CoroutineScope(Dispatchers.IO).launch {
-            customerList = petDao.findAll()
-        }
+            val customerList = petDao.findAll()
 
-        val adapter = CustomerAdapter(customerList, onItemClickListener = {
-                customer->
-                val i:Intent(this, )
-        })
+            // Atualiza o RecyclerView na thread principal
+            withContext(Dispatchers.Main) {
+                val adapter = CustomerAdapter(customerList, onItemClickListener = { customer ->
+                    val intent = Intent(context, CustomerActivity::class.java).apply {
+                        putExtra("customer", customer)
+                    }
+                    startActivity(intent)
+                })
+                binding.rvCustomer.adapter = adapter
+                binding.rvCustomer.layoutManager = LinearLayoutManager(context)
+                binding.rvCustomer.addItemDecoration(
+                    DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+                )
+            }
+        }
 
 
 

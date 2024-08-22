@@ -5,19 +5,33 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="8dp"
+
     tools:context=".ui.CustomerActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:titleTextColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_margin="5dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:elevation="5dp"
+        android:layout_marginTop="8dp"
         app:cardCornerRadius="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <ImageView
             android:id="@+id/ivProfile"
@@ -28,84 +42,147 @@
             android:src="@drawable/dogdefault" />
     </androidx.cardview.widget.CardView>
 
+
     <TextView
         android:id="@+id/txtPetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_pet"
-        android:textAlignment="center"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
+        android:layout_marginTop="24dp"
+        android:drawableEnd="@drawable/ic_pet"
+        android:drawablePadding="5dp"
+        android:textSize="38sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:text="Nina" />
+
+
+    <TextView
+        android:id="@+id/labelPetBreed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableEnd="@drawable/ic_pet"
+        android:drawablePadding="5dp"
+        android:text="Pet Breed"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPetBreed"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPetName" />
 
     <TextView
         android:id="@+id/txtPetBreed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtPetName"
-        app:layout_constraintStart_toStartOf="@+id/txtPetName"
-        app:layout_constraintTop_toBottomOf="@+id/txtPetName"
+        android:layout_marginStart="12dp"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/labelPetBreed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/labelPetBreed"
+        app:layout_constraintTop_toTopOf="@+id/labelPetBreed"
         tools:text="Vira Lata" />
+
+    <TextView
+        android:id="@+id/labelPetSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:drawableEnd="@drawable/ic_pet"
+        android:drawablePadding="5dp"
+        android:text="Pet Size"
+        android:textSize="22sp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/labelPetBreed"
+        app:layout_constraintTop_toBottomOf="@+id/labelPetBreed" />
+
 
     <TextView
         android:id="@+id/txtPetSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtPetName"
-        app:layout_constraintStart_toStartOf="@+id/txtPetName"
-        app:layout_constraintTop_toBottomOf="@+id/txtPetBreed"
-        tools:text="Medio" />
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/labelPetSize"
+        app:layout_constraintStart_toStartOf="@+id/txtPetBreed"
+        app:layout_constraintTop_toTopOf="@+id/labelPetSize"
+        tools:text="Vira Lata" />
 
-
-    <ImageView
-        android:id="@+id/ivPetSex"
+    <TextView
+        android:id="@+id/labelPetSex"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtPetName"
-        app:layout_constraintStart_toStartOf="@+id/txtPetName"
-        app:layout_constraintTop_toBottomOf="@+id/txtPetSize"
+        android:drawableEnd="@drawable/ic_pet"
+        android:drawablePadding="5dp"
+        android:text="Pet Gender"
+        android:textSize="22sp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/labelPetSize"
+        app:layout_constraintTop_toBottomOf="@+id/labelPetSize" />
+
+    <ImageView
+        android:id="@+id/ivPetSex"
+        android:layout_width="40dp"
+        android:layout_height="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/labelPetSex"
+        app:layout_constraintEnd_toEndOf="@+id/txtPetSize"
+        app:layout_constraintStart_toStartOf="@+id/txtPetSize"
+        app:layout_constraintTop_toTopOf="@+id/labelPetSex"
         app:srcCompat="@drawable/ic_female" />
+
+
     <TextView
         android:id="@+id/txtOwnerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtPetName"
-        app:layout_constraintStart_toStartOf="@+id/txtPetName"
-        app:layout_constraintTop_toBottomOf="@+id/ivPetSex"
-        tools:text="Artur" />
+        android:layout_marginTop="38dp"
+        android:drawableEnd="@drawable/ic_person"
+        android:drawablePadding="5dp"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelPetSex"
+        tools:text="Artur Oliveira" />
+
     <TextView
         android:id="@+id/txtOwnerPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="16sp"
         android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtPetName"
-        app:layout_constraintStart_toStartOf="@+id/txtPetName"
+        android:drawableEnd="@drawable/ic_wpp"
+        android:inputType="number"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/txtOwnerName"
+        app:layout_constraintStart_toStartOf="@+id/txtOwnerName"
         app:layout_constraintTop_toBottomOf="@+id/txtOwnerName"
-        tools:text="1999999" />
+        tools:text="1999138-2999" />
 
-    <ImageButton
-        android:layout_width="43dp"
-        android:layout_height="39dp"
-        android:backgroundTint="@android:color/transparent"
-        android:src="@drawable/ic_wpp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtOwnerPhone"
-        app:layout_constraintStart_toEndOf="@+id/txtOwnerPhone"
-        app:layout_constraintTop_toTopOf="@+id/txtOwnerPhone" />
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOwnerPhone" />
 
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnDelete"
+        app:layout_constraintTop_toTopOf="@+id/btnDelete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
