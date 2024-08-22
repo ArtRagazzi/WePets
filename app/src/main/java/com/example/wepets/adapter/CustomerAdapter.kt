@@ -9,7 +9,7 @@ import com.example.wepets.R
 import com.example.wepets.databinding.CustomerItemBinding
 import com.example.wepets.model.Pet
 
-class CustomerAdapter(private val customers:List<Pet>, private val onItemClickListener: (Pet) -> Unit):RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
+class CustomerAdapter(private var customers:List<Pet>, private val onItemClickListener: (Pet) -> Unit):RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
 
 
     inner class ViewHolder(private val customerItemBinding:CustomerItemBinding) : RecyclerView.ViewHolder(customerItemBinding.root){
@@ -63,6 +63,12 @@ class CustomerAdapter(private val customers:List<Pet>, private val onItemClickLi
         }else{
             return R.drawable.ic_female
         }
+    }
+
+    // Método para atualizar a lista
+    fun updateCustomers(newCustomers: List<Pet>) {
+        customers = newCustomers
+        notifyDataSetChanged() // Notifica que os dados foram atualizados
     }
 
 

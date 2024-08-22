@@ -13,9 +13,13 @@
         android:theme="@style/Theme.WePets"
         tools:targetApi="31">
         <activity
+            android:name=".ui.UpdatePetActivity"
+            android:parentActivityName=".ui.CustomerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.CustomerActivity"
             android:exported="false"
-            android:parentActivityName=".ui.MainActivity"/>
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.NewPetActivity"
             android:exported="false"

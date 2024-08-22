@@ -226,12 +226,12 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnInsert"
+            android:id="@+id/btnUpdate"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp"
-            android:text="Insert"
+            android:text="Update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"

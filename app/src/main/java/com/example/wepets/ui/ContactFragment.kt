@@ -23,6 +23,8 @@ class ContactFragment : Fragment() {
 
     private lateinit var binding:FragmentContactBinding
 
+    private lateinit var adapter: CustomerAdapter
+
     // Instancias DB
     private lateinit var db:PetDatabase
     private lateinit var petDao: PetDao
@@ -47,30 +49,34 @@ class ContactFragment : Fragment() {
 
         //Configurando RecyclerView
 
+
+
+        adapter = CustomerAdapter(emptyList(), onItemClickListener = { customer ->
+            val intent = Intent(context, CustomerActivity::class.java).apply {
+                putExtra("customer", customer)
+            }
+            startActivity(intent)
+        })
+        binding.rvCustomer.adapter = adapter
+        binding.rvCustomer.layoutManager = LinearLayoutManager(context)
+        binding.rvCustomer.addItemDecoration(
+            DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        )
+
+        loadCustomerList()
+        return binding.root
+
+    }
+    private fun loadCustomerList(){
         CoroutineScope(Dispatchers.IO).launch {
             val customerList = petDao.findAll()
 
-            // Atualiza o RecyclerView na thread principal
             withContext(Dispatchers.Main) {
-                val adapter = CustomerAdapter(customerList, onItemClickListener = { customer ->
-                    val intent = Intent(context, CustomerActivity::class.java).apply {
-                        putExtra("customer", customer)
-                    }
-                    startActivity(intent)
-                })
-                binding.rvCustomer.adapter = adapter
-                binding.rvCustomer.layoutManager = LinearLayoutManager(context)
-                binding.rvCustomer.addItemDecoration(
-                    DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
-                )
+                adapter.updateCustomers(customerList)
             }
         }
-
-
-
-
-        return binding.root
     }
+
 
 
 }
