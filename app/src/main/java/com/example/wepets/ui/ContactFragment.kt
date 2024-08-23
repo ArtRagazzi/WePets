@@ -42,16 +42,12 @@ class ContactFragment : Fragment() {
 
 
 
-
         binding.fabAdd.setOnClickListener {
             startActivity(Intent(context,NewPetActivity::class.java))
         }
 
         //Configurando RecyclerView
-
-
-
-        adapter = CustomerAdapter(emptyList(), onItemClickListener = { customer ->
+        adapter = CustomerAdapter(onItemClickListener = { customer ->
             val intent = Intent(context, CustomerActivity::class.java).apply {
                 putExtra("customer", customer)
             }
@@ -63,20 +59,40 @@ class ContactFragment : Fragment() {
             DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         )
 
-        loadCustomerList()
+        binding.btnSeach.setOnClickListener{
+            searchByName()
+        }
+
+
+
         return binding.root
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        loadCustomerList()
     }
     private fun loadCustomerList(){
         CoroutineScope(Dispatchers.IO).launch {
             val customerList = petDao.findAll()
 
             withContext(Dispatchers.Main) {
-                adapter.updateCustomers(customerList)
+                adapter.addOnList(customerList)
             }
         }
     }
 
+    private fun searchByName(){
+        val name = binding.tiCustomerSearch.text.toString().lowercase()
+        CoroutineScope(Dispatchers.IO).launch {
+            val customerListFilterByName = petDao.findByName(name)
+
+            withContext(Dispatchers.Main) {
+                adapter.addOnList(customerListFilterByName)
+            }
+        }
+    }
 
 
 }

@@ -49,16 +49,16 @@ class UpdatePetActivity : AppCompatActivity() {
             intent.getParcelableExtra("customer")
         }
 
-        if(customer!=null){
-            Log.i("infoCustomer", "$customer")
+        if (customer != null) {
             setupItens(customer)
+
             binding.btnUpdate.setOnClickListener {
-                updateCustomer(customer)
-                Toast.makeText(this,"Updated customer", Toast.LENGTH_SHORT).show()
+                updateCustomer(customer.id!!)
+                Toast.makeText(this, "Updated customer", Toast.LENGTH_SHORT).show()
 
                 finish()
             }
-        }else{
+        } else {
             finish()
         }
     }
@@ -68,27 +68,54 @@ class UpdatePetActivity : AppCompatActivity() {
         binding.tiImageUrl.setText(customer.photoUrl)
         binding.tiPetName.setText(customer.namePet)
         binding.tiPetBreed.setText(customer.breed)
-        when(customer.size){
+        when (customer.size) {
             "Pequeno" -> binding.rbSmall.isChecked = true
             "Medio" -> binding.rbMedium.isChecked = true
             "Grande" -> binding.rbBig.isChecked = true
+            else -> customer.size
         }
-        when(customer.sexPet){
+        when (customer.sexPet) {
             "Femea" -> binding.rbFemale.isChecked = true
             "Macho" -> binding.rbMale.isChecked = true
+            else -> customer.sexPet
         }
         binding.tiOwnerName.setText(customer.ownerName)
         binding.tiOwnerPhone.setText(customer.phoneNumber)
 
     }
-    fun updateCustomer(customer: Pet){
+
+    fun updateCustomer(oldCustomerId:Int) {
+
+        //Criando Dados para Update
+        val petName = binding.tiPetName.text.toString().lowercase()
+        val petBreed = binding.tiPetBreed.text.toString()
+        val ownerName = binding.tiOwnerName.text.toString().lowercase()
+        val ownerPhone = binding.tiOwnerPhone.text.toString()
+        val petUrl = binding.tiImageUrl.text.toString()
+        val petSize:String
+        if (binding.rbSmall.isChecked) {
+            petSize = "Pequeno"
+        } else if (binding.rbMedium.isChecked) {
+            petSize = "Medio"
+        } else {
+            petSize = "Grande"
+        }
+        val petSex:String
+        if (binding.rbFemale.isChecked) {
+            petSex = "Femea"
+        } else {
+            petSex = "Macho"
+        }
+
+        val customerToUpdate = Pet(oldCustomerId,petName,petSize,petBreed,petSex,ownerName,ownerPhone,petUrl)
+
         CoroutineScope(Dispatchers.IO).launch {
-            petDao.update(customer)
+            petDao.update(customerToUpdate)
         }
     }
 
 
-    fun setupToolbar(){
+    fun setupToolbar() {
         // Configurar a Toolbar como a ActionBar da Activity
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)

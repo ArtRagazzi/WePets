@@ -64,11 +64,11 @@ class NewPetActivity : AppCompatActivity() {
     private fun insertPet() {
         val newPet = Pet(
             null,
-            petName,
+            petName.lowercase(),
             petSize,
             petBreed,
             petSex,
-            ownerName,
+            ownerName.lowercase(),
             ownerPhone,
             binding.tiImageUrl.toString()
         )

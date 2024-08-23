@@ -9,8 +9,15 @@ import com.example.wepets.R
 import com.example.wepets.databinding.CustomerItemBinding
 import com.example.wepets.model.Pet
 
-class CustomerAdapter(private var customers:List<Pet>, private val onItemClickListener: (Pet) -> Unit):RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
+class CustomerAdapter(private val onItemClickListener: (Pet) -> Unit):RecyclerView.Adapter<CustomerAdapter.ViewHolder>() {
 
+    private var customers = emptyList<Pet>()
+    // Método para atualizar a lista
+
+    fun addOnList(newCustomers: List<Pet>) {
+        customers = newCustomers
+        notifyDataSetChanged()
+    }
 
     inner class ViewHolder(private val customerItemBinding:CustomerItemBinding) : RecyclerView.ViewHolder(customerItemBinding.root){
 
@@ -22,10 +29,10 @@ class CustomerAdapter(private var customers:List<Pet>, private val onItemClickLi
                 .error(R.drawable.dogdefault)
                 .into(customerItemBinding.ivProfile)
 
-            customerItemBinding.txtPetName.setText(customer.namePet)
+            customerItemBinding.txtPetName.setText(customer.namePet.replaceFirstChar { it.uppercase() })
             customerItemBinding.txtPhone.setText(customer.phoneNumber)
-            customerItemBinding.txtPetBreed.setText(customer.breed)
-            customerItemBinding.txtOwnerName.setText(customer.ownerName)
+            customerItemBinding.txtPetBreed.setText(customer.breed.replaceFirstChar { it.uppercase() })
+            customerItemBinding.txtOwnerName.setText(customer.ownerName.replaceFirstChar { it.uppercase() })
 
             Glide.with(customerItemBinding.root.context)
                 .load(getGender(customer.sexPet))
@@ -65,11 +72,7 @@ class CustomerAdapter(private var customers:List<Pet>, private val onItemClickLi
         }
     }
 
-    // Método para atualizar a lista
-    fun updateCustomers(newCustomers: List<Pet>) {
-        customers = newCustomers
-        notifyDataSetChanged() // Notifica que os dados foram atualizados
-    }
+
 
 
 }

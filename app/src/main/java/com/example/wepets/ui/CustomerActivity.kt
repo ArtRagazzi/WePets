@@ -1,6 +1,7 @@
 package com.example.wepets.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -72,6 +73,10 @@ class CustomerActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.txtOwnerPhone.setOnClickListener {
+            openWhatsapp(binding.txtOwnerPhone.text.toString())
+        }
+
 
 
 
@@ -87,10 +92,10 @@ class CustomerActivity : AppCompatActivity() {
             .error(R.drawable.dogdefault)
             .centerCrop()
             .into(binding.ivProfile)
-        binding.txtPetName.setText(customer.namePet)
-        binding.txtPetSize.setText(customer.size)
-        binding.txtPetBreed.setText(customer.breed)
-        binding.txtOwnerName.setText(customer.ownerName)
+        binding.txtPetName.setText(customer.namePet.replaceFirstChar { it.uppercase() })
+        binding.txtPetSize.setText(customer.size.replaceFirstChar { it.uppercase() })
+        binding.txtPetBreed.setText(customer.breed.replaceFirstChar { it.uppercase() })
+        binding.txtOwnerName.setText(customer.ownerName.replaceFirstChar { it.uppercase() })
         binding.txtOwnerPhone.setText(customer.phoneNumber)
 
         Glide.with(this)
@@ -140,6 +145,21 @@ class CustomerActivity : AppCompatActivity() {
             petDao.delete(customer)
         }
         finish()
+    }
+
+    private fun openWhatsapp(number:String){
+        val number = "+55"+number
+        val url = "https://wa.me/$number"
+
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        //Verifica se há aplicativo que pode lidar com essa Intent (Possivel abrir o WPP)
+        if(intent.resolveActivity(packageManager) != null){
+            startActivity(intent)
+        }else{
+            Toast.makeText(this,"Not possible open Whatsapp", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 

@@ -27,4 +27,8 @@ interface PetDao {
     @Query("SELECT * FROM pet ORDER BY namePet ASC")
     fun findAll():List<Pet>
 
+    @Query("SELECT * FROM pet WHERE namePet LIKE '%' || :name || '%' OR ownerName LIKE '%' || :name || '%'")
+    fun findByName(name: String): List<Pet>
+
+
 }
