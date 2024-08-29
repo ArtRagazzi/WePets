@@ -8,6 +8,9 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.wepets.R
 import com.example.wepets.databinding.ActivityMainBinding
+import com.example.wepets.ui.contact.ContactFragment
+import com.example.wepets.ui.revenue.RevenueFragment
+import com.example.wepets.ui.scheduling.SchedulingFragment
 
 class MainActivity : AppCompatActivity() {
 

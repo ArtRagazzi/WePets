@@ -1,10 +1,9 @@
-package com.example.wepets.ui
+package com.example.wepets.ui.contact
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -15,7 +14,7 @@ import com.bumptech.glide.Glide
 import com.example.wepets.R
 import com.example.wepets.databinding.ActivityCustomerBinding
 import com.example.wepets.db.dao.PetDao
-import com.example.wepets.db.database.PetDatabase
+import com.example.wepets.db.database.WePetsDatabase
 import com.example.wepets.model.Pet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -29,7 +28,7 @@ class CustomerActivity : AppCompatActivity() {
 
     // Instancias DB
     private val db by lazy {
-        PetDatabase.getDatabase(applicationContext)
+        WePetsDatabase.getDatabase(applicationContext)
     }
     private val petDao: PetDao by lazy {
         db.getPetDao

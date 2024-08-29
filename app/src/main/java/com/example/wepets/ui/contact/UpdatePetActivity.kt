@@ -1,9 +1,7 @@
-package com.example.wepets.ui
+package com.example.wepets.ui.contact
 
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.wepets.R
 import com.example.wepets.databinding.ActivityUpdatePetBinding
 import com.example.wepets.db.dao.PetDao
-import com.example.wepets.db.database.PetDatabase
+import com.example.wepets.db.database.WePetsDatabase
 import com.example.wepets.model.Pet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -25,7 +23,7 @@ class UpdatePetActivity : AppCompatActivity() {
 
     // Instancias DB
     private val db by lazy {
-        PetDatabase.getDatabase(applicationContext)
+        WePetsDatabase.getDatabase(applicationContext)
     }
     private val petDao: PetDao by lazy {
         db.getPetDao

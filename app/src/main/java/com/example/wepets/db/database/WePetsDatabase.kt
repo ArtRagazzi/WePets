@@ -5,27 +5,30 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.wepets.db.dao.PetDao
+import com.example.wepets.db.dao.RevenueDao
 import com.example.wepets.model.Pet
+import com.example.wepets.model.Revenue
 import kotlin.concurrent.Volatile
 
 @Database(
-    entities = [Pet::class],
-    version = 1
+    entities = [Pet::class, Revenue::class],
+    version = 2
 )
-abstract class PetDatabase:RoomDatabase() {
+abstract class WePetsDatabase:RoomDatabase() {
 
     abstract val getPetDao:PetDao
+    abstract val getRevenueDao:RevenueDao
 
 
     companion object {
         @Volatile
-        private var INSTANCE: PetDatabase?=null
+        private var INSTANCE: WePetsDatabase?=null
 
-        fun getDatabase(context: Context): PetDatabase {
+        fun getDatabase(context: Context): WePetsDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    PetDatabase::class.java,
+                    WePetsDatabase::class.java,
                     "pet_database"
                 )
                     .build()

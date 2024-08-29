@@ -1,4 +1,4 @@
-package com.example.wepets.ui
+package com.example.wepets.ui.scheduling
 
 import android.os.Bundle
 import android.view.LayoutInflater

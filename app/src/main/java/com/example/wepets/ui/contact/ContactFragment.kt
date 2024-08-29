@@ -1,4 +1,4 @@
-package com.example.wepets.ui
+package com.example.wepets.ui.contact
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,8 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wepets.adapter.CustomerAdapter
 import com.example.wepets.databinding.FragmentContactBinding
 import com.example.wepets.db.dao.PetDao
-import com.example.wepets.db.database.PetDatabase
-import com.example.wepets.model.Pet
+import com.example.wepets.db.database.WePetsDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,7 +25,7 @@ class ContactFragment : Fragment() {
     private lateinit var adapter: CustomerAdapter
 
     // Instancias DB
-    private lateinit var db:PetDatabase
+    private lateinit var db:WePetsDatabase
     private lateinit var petDao: PetDao
 
 
@@ -34,16 +33,17 @@ class ContactFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //DB
+
         binding = FragmentContactBinding.inflate(inflater, container, false)
+        //DB
         //Garente que o contexto Existe(Cuidado)
-        db = context?.let { PetDatabase.getDatabase(it) }!!
+        db = context?.let { WePetsDatabase.getDatabase(it) }!!
         petDao = db.getPetDao
 
 
 
         binding.fabAdd.setOnClickListener {
-            startActivity(Intent(context,NewPetActivity::class.java))
+            startActivity(Intent(context, NewPetActivity::class.java))
         }
 
         //Configurando RecyclerView

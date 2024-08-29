@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="@+id/main"
         app:layout_constraintTop_toTopOf="@+id/main"
         app:layout_constraintVertical_bias="0.5"
-        tools:context=".ui.NewPetActivity">
+        tools:context=".ui.contact.NewPetActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

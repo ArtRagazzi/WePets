@@ -1,4 +1,4 @@
-package com.example.wepets.ui
+package com.example.wepets.ui.contact
 
 import android.os.Bundle
 import android.widget.Toast
@@ -9,7 +9,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.wepets.R
 import com.example.wepets.databinding.ActivityNewPetBinding
 import com.example.wepets.db.dao.PetDao
-import com.example.wepets.db.database.PetDatabase
+import com.example.wepets.db.database.WePetsDatabase
 import com.example.wepets.model.Pet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +22,7 @@ class NewPetActivity : AppCompatActivity() {
 
     // Instancias DB
     private val db by lazy {
-        PetDatabase.getDatabase(applicationContext)
+        WePetsDatabase.getDatabase(applicationContext)
     }
     private val petDao: PetDao by lazy {
         db.getPetDao
