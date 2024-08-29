@@ -28,13 +28,15 @@ class NewPetActivity : AppCompatActivity() {
         db.getPetDao
     }
 
-    private lateinit var urlImage: String
+    private lateinit var imgUrl:String
     private lateinit var petName: String
     private lateinit var petBreed: String
     private lateinit var petSize: String
     private lateinit var petSex: String
     private lateinit var ownerName: String
     private lateinit var ownerPhone: String
+    private lateinit var notes:String
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,13 +66,14 @@ class NewPetActivity : AppCompatActivity() {
     private fun insertPet() {
         val newPet = Pet(
             null,
-            petName.lowercase(),
-            petSize,
-            petBreed,
-            petSex,
-            ownerName.lowercase(),
-            ownerPhone,
-            binding.tiImageUrl.toString()
+            namePet = petName.lowercase(),
+            size = petSize,
+            breed = petBreed,
+            sexPet = petSex,
+            ownerName = ownerName.lowercase(),
+            phoneNumber = ownerPhone,
+            photoUrl = imgUrl,
+            notes = notes
         )
         CoroutineScope(Dispatchers.IO).launch {
             petDao.insert(newPet)
@@ -83,6 +86,7 @@ class NewPetActivity : AppCompatActivity() {
         petBreed = binding.tiPetBreed.text.toString()
         ownerName = binding.tiOwnerName.text.toString()
         ownerPhone = binding.tiOwnerPhone.text.toString()
+
 
         if (binding.rbSmall.isChecked) {
             petSize = "Pequeno"
@@ -97,7 +101,14 @@ class NewPetActivity : AppCompatActivity() {
         } else {
             petSex = "Macho"
         }
-
+        if(binding.tiNotes.text.isEmpty()){
+            notes = ""
+        }
+        if(binding.tiImageUrl.text.isEmpty()){
+            imgUrl = ""
+        }else{
+            imgUrl = binding.tiImageUrl.text.toString()
+        }
 
         if (petName.isNotEmpty() && petBreed.isNotEmpty() && ownerName.isNotEmpty() && ownerPhone.isNotEmpty()) {
             return true

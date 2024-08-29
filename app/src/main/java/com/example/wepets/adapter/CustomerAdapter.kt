@@ -26,6 +26,7 @@ class CustomerAdapter(private val onItemClickListener: (Pet) -> Unit):RecyclerVi
 
             Glide.with(customerItemBinding.root.context)
                 .load(customer.photoUrl)
+                .circleCrop()
                 .error(R.drawable.dogdefault)
                 .into(customerItemBinding.ivProfile)
 

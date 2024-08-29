@@ -26,10 +26,10 @@
         android:id="@+id/cardView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:elevation="5dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
+        android:elevation="5dp"
         app:cardCornerRadius="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
@@ -47,15 +47,15 @@
         android:id="@+id/txtPetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:drawableEnd="@drawable/ic_pet"
         android:drawablePadding="5dp"
         android:textSize="38sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
         tools:text="Nina" />
 
 
@@ -63,27 +63,25 @@
         android:id="@+id/labelPetBreed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="12dp"
         android:drawableEnd="@drawable/ic_pet"
         android:drawablePadding="5dp"
         android:text="Pet Breed"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/txtPetBreed"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPetName" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
         android:id="@+id/txtPetBreed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/labelPetBreed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/labelPetBreed"
+        app:layout_constraintStart_toStartOf="@+id/tvNotes"
         app:layout_constraintTop_toTopOf="@+id/labelPetBreed"
         tools:text="Vira Lata" />
 
@@ -96,6 +94,7 @@
         android:drawablePadding="5dp"
         android:text="Pet Size"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/labelPetBreed"
         app:layout_constraintTop_toBottomOf="@+id/labelPetBreed" />
@@ -107,9 +106,10 @@
         android:layout_height="wrap_content"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/labelPetSize"
+        app:layout_constraintEnd_toEndOf="@+id/txtPetBreed"
         app:layout_constraintStart_toStartOf="@+id/txtPetBreed"
         app:layout_constraintTop_toTopOf="@+id/labelPetSize"
-        tools:text="Vira Lata" />
+        tools:text="Pequeno" />
 
     <TextView
         android:id="@+id/labelPetSex"
@@ -120,47 +120,55 @@
         android:drawablePadding="5dp"
         android:text="Pet Gender"
         android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/labelPetSize"
         app:layout_constraintTop_toBottomOf="@+id/labelPetSize" />
 
     <ImageView
         android:id="@+id/ivPetSex"
-        android:layout_width="40dp"
-        android:layout_height="36dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="@+id/labelPetSex"
         app:layout_constraintEnd_toEndOf="@+id/txtPetSize"
         app:layout_constraintStart_toStartOf="@+id/txtPetSize"
         app:layout_constraintTop_toTopOf="@+id/labelPetSex"
         app:srcCompat="@drawable/ic_female" />
 
+    <TextView
+        android:id="@+id/tvOwnerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Owner Information"
+        android:textSize="28sp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="@+id/labelPetSex"
+        app:layout_constraintTop_toBottomOf="@+id/labelPetSex" />
 
     <TextView
         android:id="@+id/txtOwnerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
         android:drawableEnd="@drawable/ic_person"
         android:drawablePadding="5dp"
         android:textSize="26sp"
+        android:layout_marginTop="24dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/labelPetSex"
+        app:layout_constraintStart_toStartOf="@+id/labelPetSex"
+        app:layout_constraintTop_toBottomOf="@+id/tvOwnerLabel"
         tools:text="Artur Oliveira" />
 
     <TextView
         android:id="@+id/txtOwnerPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:drawableEnd="@drawable/ic_wpp"
         android:inputType="number"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtOwnerName"
-        app:layout_constraintStart_toStartOf="@+id/txtOwnerName"
-        app:layout_constraintTop_toBottomOf="@+id/txtOwnerName"
+        app:layout_constraintBottom_toBottomOf="@+id/txtOwnerName"
+        app:layout_constraintStart_toStartOf="@+id/ivPetSex"
+        app:layout_constraintTop_toTopOf="@+id/txtOwnerName"
         tools:text="1999138-2999" />
 
     <Button
@@ -168,8 +176,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Delete"
         android:drawableEnd="@drawable/ic_delete"
+        android:text="Delete"
         app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -179,12 +187,23 @@
         android:id="@+id/btnUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update"
         android:drawableEnd="@drawable/ic_edit"
+        android:text="Update"
         app:layout_constraintBottom_toBottomOf="@+id/btnDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnDelete"
         app:layout_constraintTop_toTopOf="@+id/btnDelete" />
+
+    <TextView
+        android:id="@+id/tvNotes"
+        android:layout_width="196dp"
+        android:layout_height="84dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/txtPetName"
+        app:layout_constraintTop_toBottomOf="@+id/txtPetName"
+        tools:text="Alegico a Tesouras e shampoos" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

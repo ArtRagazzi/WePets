@@ -79,6 +79,7 @@ class UpdatePetActivity : AppCompatActivity() {
         }
         binding.tiOwnerName.setText(customer.ownerName)
         binding.tiOwnerPhone.setText(customer.phoneNumber)
+        binding.tiNotes.setText(customer.notes)
 
     }
 
@@ -104,12 +105,14 @@ class UpdatePetActivity : AppCompatActivity() {
         } else {
             petSex = "Macho"
         }
+        val petNote = binding.tiNotes.text.toString()
 
-        val customerToUpdate = Pet(oldCustomerId,petName,petSize,petBreed,petSex,ownerName,ownerPhone,petUrl)
+        val customerToUpdate = Pet(oldCustomerId,petName,petSize,petBreed,petSex,ownerName,ownerPhone,petUrl,petNote)
 
         CoroutineScope(Dispatchers.IO).launch {
             petDao.update(customerToUpdate)
         }
+
     }
 
 

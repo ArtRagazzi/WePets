@@ -18,6 +18,7 @@ data class Pet(
     val sexPet:String,
     val ownerName:String,
     val phoneNumber:String,
-    val photoUrl:String?
+    val photoUrl:String?,
+    val notes:String = ""
 
 ): Parcelable

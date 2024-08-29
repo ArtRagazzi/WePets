@@ -65,6 +65,7 @@ class CustomerActivity : AppCompatActivity() {
                     putExtra("customer", customer)
                 }
                 startActivity(intent)
+                finish()
             }
 
         }else{
@@ -96,6 +97,7 @@ class CustomerActivity : AppCompatActivity() {
         binding.txtPetBreed.setText(customer.breed.replaceFirstChar { it.uppercase() })
         binding.txtOwnerName.setText(customer.ownerName.replaceFirstChar { it.uppercase() })
         binding.txtOwnerPhone.setText(customer.phoneNumber)
+        binding.tvNotes.setText(customer.notes)
 
         Glide.with(this)
             .load(getGender(customer.sexPet))
