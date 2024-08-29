@@ -12,7 +12,7 @@ import kotlin.concurrent.Volatile
 
 @Database(
     entities = [Pet::class, Revenue::class],
-    version = 2
+    version = 1
 )
 abstract class WePetsDatabase:RoomDatabase() {
 

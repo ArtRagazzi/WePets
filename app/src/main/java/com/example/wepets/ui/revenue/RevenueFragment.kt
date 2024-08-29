@@ -11,16 +11,18 @@ import com.example.wepets.db.dao.PetDao
 import com.example.wepets.db.dao.RevenueDao
 import com.example.wepets.db.database.WePetsDatabase
 import com.example.wepets.ui.contact.NewPetActivity
+import com.example.wepets.ui.contact.UpdatePetActivity
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 class RevenueFragment : Fragment() {
 
     private lateinit var binding: FragmentRevenueBinding
-    private lateinit var todayDate:String
+    private lateinit var myDate:String
 
     // Instancias DB
     private lateinit var db: WePetsDatabase
@@ -38,16 +40,21 @@ class RevenueFragment : Fragment() {
 
 
         binding.fabAdd.setOnClickListener {
-            startActivity(Intent(context, NewRevenueActivity::class.java))
+            val intent = Intent(context, NewRevenueActivity::class.java).apply {
+                putExtra("date", myDate)
+            }
+            startActivity(intent)
         }
 
 
 
         binding.ibLeft.setOnClickListener {
-            todayDate
+            myDate = getDateMinusOneMonth(myDate)
+            updateDate()
         }
         binding.ibRight.setOnClickListener {
-
+            myDate = getDatePlusOneMonth(myDate)
+            updateDate()
         }
 
 
@@ -58,14 +65,49 @@ class RevenueFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        todayDate = getTodayDate()
+        myDate = getTodayDate()
+        updateDate()
     }
 
 
     fun getTodayDate(): String {
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())  // Define o formato desejado
+        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato desejado
         val date = Date()  // Obtém a data atual
         return dateFormat.format(date)  // Formata a data e retorna como String
+    }
+
+    fun getDateMinusOneMonth(dateString: String): String {
+        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato esperado da data de entrada
+
+        // Converte a string para um objeto Date
+        val date = dateFormat.parse(dateString) ?: throw IllegalArgumentException("Invalid Date")
+
+        val calendar = Calendar.getInstance()  // Obtém uma instância do Calendar
+        calendar.time = date  // Define a data do Calendar para a data fornecida
+
+        calendar.add(Calendar.MONTH, -1)  // Diminui um mês da data
+
+        // Retorna a nova data formatada como String
+        return dateFormat.format(calendar.time)
+    }
+    fun getDatePlusOneMonth(dateString: String): String {
+        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato esperado da data de entrada
+
+        // Converte a string para um objeto Date
+        val date = dateFormat.parse(dateString) ?: throw IllegalArgumentException("Invalid Date")
+
+        val calendar = Calendar.getInstance()  // Obtém uma instância do Calendar
+        calendar.time = date  // Define a data do Calendar para a data fornecida
+
+        calendar.add(Calendar.MONTH, +1)  // Diminui um mês da data
+
+        // Retorna a nova data formatada como String
+        return dateFormat.format(calendar.time)
+    }
+
+    fun updateDate(){
+        binding.tvDate.setText(myDate)
+        //ReciclerView
     }
 }
 

@@ -12,7 +12,8 @@ data class Revenue (
     @PrimaryKey(autoGenerate = true)
     val id:Int? = null,
     val name:String,
-    val date:Date,
+    val date:String,
     val value:Double,
     val type:String,
+    val image:Int
 ) : Parcelable
