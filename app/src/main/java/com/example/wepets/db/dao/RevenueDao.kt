@@ -23,7 +23,7 @@ interface RevenueDao {
     fun findAll():List<Revenue>
 
 
-    @Query("SELECT * FROM revenue WHERE date >= :startDate AND date<= :endDate")
+    @Query("SELECT * FROM revenue WHERE date >= :startDate AND date<= :endDate ORDER BY id")
     fun findByMonth(startDate: String, endDate: String): List<Revenue>
 
 
