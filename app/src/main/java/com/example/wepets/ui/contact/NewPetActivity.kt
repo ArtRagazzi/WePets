@@ -103,6 +103,8 @@ class NewPetActivity : AppCompatActivity() {
         }
         if(binding.tiNotes.text.isEmpty()){
             notes = ""
+        }else{
+            notes = binding.tiNotes.text.toString()
         }
         if(binding.tiImageUrl.text.isEmpty()){
             imgUrl = ""
