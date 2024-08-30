@@ -27,7 +27,7 @@ class RevenueAdapter(private val onItemClickListener: (Revenue)->Unit ):Recycler
             revenueItemBinding.tvName.setText(itemRevenue.name)
             revenueItemBinding.tvValue.setText(itemRevenue.value.toString())
 
-            revenueItemBinding.root.setOnClickListener {
+            revenueItemBinding.ibDelete.setOnClickListener {
                 onItemClickListener(itemRevenue)
             }
 

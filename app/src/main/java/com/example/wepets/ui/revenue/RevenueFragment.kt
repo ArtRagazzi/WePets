@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +15,8 @@ import com.example.wepets.databinding.FragmentRevenueBinding
 import com.example.wepets.db.dao.PetDao
 import com.example.wepets.db.dao.RevenueDao
 import com.example.wepets.db.database.WePetsDatabase
+import com.example.wepets.model.Pet
+import com.example.wepets.model.Revenue
 import com.example.wepets.ui.contact.CustomerActivity
 import com.example.wepets.ui.contact.NewPetActivity
 import com.example.wepets.ui.contact.UpdatePetActivity
@@ -31,7 +34,7 @@ import java.util.Locale
 class RevenueFragment : Fragment() {
 
     private lateinit var binding: FragmentRevenueBinding
-    private lateinit var myDate:String
+    private lateinit var myDate: String
 
     private lateinit var adapter: RevenueAdapter
 
@@ -43,7 +46,7 @@ class RevenueFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRevenueBinding.inflate(inflater, container,false)
+        binding = FragmentRevenueBinding.inflate(inflater, container, false)
         //DB
         //Garente que o contexto Existe(Cuidado)
         db = context?.let { WePetsDatabase.getDatabase(it) }!!
@@ -67,11 +70,9 @@ class RevenueFragment : Fragment() {
         }
 
         //Configurando RecyclerView
-        adapter = RevenueAdapter { itemRevenue->
-            val intent = Intent(context, RevenueActivity::class.java).apply {
-                putExtra("itemRevenue", itemRevenue)
-            }
-            startActivity(intent)
+        adapter = RevenueAdapter { itemRevenue ->
+            deleteRevenueDialog(itemRevenue)
+
         }
         binding.rvRevenue.adapter = adapter
         binding.rvRevenue.layoutManager = LinearLayoutManager(context)
@@ -93,15 +94,18 @@ class RevenueFragment : Fragment() {
     }
 
 
-
     fun getTodayDate(): String {
-        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato desejado
+        val dateFormat =
+            SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato desejado
         val date = Date()  // Obtém a data atual
         return dateFormat.format(date)  // Formata a data e retorna como String
     }
 
     fun getDateMinusOneMonth(dateString: String): String {
-        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato esperado da data de entrada
+        val dateFormat = SimpleDateFormat(
+            "MM/yyyy",
+            Locale.getDefault()
+        )  // Define o formato esperado da data de entrada
 
         // Converte a string para um objeto Date
         val date = dateFormat.parse(dateString) ?: throw IllegalArgumentException("Invalid Date")
@@ -114,8 +118,12 @@ class RevenueFragment : Fragment() {
         // Retorna a nova data formatada como String
         return dateFormat.format(calendar.time)
     }
+
     fun getDatePlusOneMonth(dateString: String): String {
-        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())  // Define o formato esperado da data de entrada
+        val dateFormat = SimpleDateFormat(
+            "MM/yyyy",
+            Locale.getDefault()
+        )  // Define o formato esperado da data de entrada
 
         // Converte a string para um objeto Date
         val date = dateFormat.parse(dateString) ?: throw IllegalArgumentException("Invalid Date")
@@ -162,6 +170,35 @@ class RevenueFragment : Fragment() {
             }
         }
     }
+
+
+    private fun deleteRevenueDialog(revenue: Revenue) {
+
+        context?.let {
+            AlertDialog.Builder(it)
+                .setTitle("Delete Item")
+                .setMessage("Do you really want to delete this revenue item?")
+                .setPositiveButton("Yes") { dialog, position ->
+                    deleteRevenueItem(revenue)
+                }
+                .setNegativeButton("No") { dialog, position ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+        }
+    }
+
+    private fun deleteRevenueItem(revenue: Revenue) {
+        CoroutineScope(Dispatchers.IO).launch {
+            revenueDao.delete(revenue)
+            withContext(Dispatchers.Main){
+                updateDate()
+            }
+        }
+
+    }
+
 }
 
 

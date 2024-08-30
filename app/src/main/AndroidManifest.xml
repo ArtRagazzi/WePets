@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,35 +13,35 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WePets"
-        tools:targetApi="31"
-       >
-
-
+        tools:targetApi="31">
+        <activity
+            android:name=".ui.revenue.GraphActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.revenue.RevenueActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.revenue.NewRevenueActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.contact.UpdatePetActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.contact.CustomerActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.contact.NewPetActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
