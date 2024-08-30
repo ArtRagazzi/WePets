@@ -7,13 +7,14 @@ import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
-@Entity(tableName = "revenue")
-data class Revenue (
+@Entity(tableName = "schedule")
+data class Schedule(
     @PrimaryKey(autoGenerate = true)
     val id:Int? = null,
-    val name:String,
+    val customerId :Int,
     val date:String,
-    val value:Double,
-    val type:String,
-    val image:Int
-) : Parcelable
+    val time:String,
+    val typeWork:String,
+    val value:Double
+
+): Parcelable

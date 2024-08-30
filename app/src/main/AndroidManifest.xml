@@ -15,13 +15,16 @@
         android:theme="@style/Theme.WePets"
         tools:targetApi="31">
         <activity
-            android:name=".ui.revenue.GraphActivity"
+            android:name=".ui.scheduling.TestActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.revenue.RevenueActivity"
+            android:name=".ui.scheduling.NewSchedulePt2Activity"
             android:exported="false"
-            android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait" />
+            android:parentActivityName=".ui.MainActivity" />
+        <activity
+            android:name=".ui.scheduling.NewScheduleActivity"
+            android:exported="false"
+            android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.revenue.NewRevenueActivity"
             android:exported="false"
