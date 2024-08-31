@@ -130,6 +130,6 @@ class NewRevenueActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Adicionar novo item"
+        supportActionBar?.title = "Adicionar novo Item"
     }
 }

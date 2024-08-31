@@ -69,7 +69,7 @@ class CustomerActivity : AppCompatActivity() {
             }
 
         }else{
-            Toast.makeText(this,"Error, not possible access data",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Erro, Não foi possivel acessar esse dado",Toast.LENGTH_SHORT).show()
             finish()
         }
 
@@ -117,7 +117,7 @@ class CustomerActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Customer Information"
+        supportActionBar?.title = "Informação do Cliente"
     }
     fun getGender(gender:String): Int {
         if(gender == "Macho"){
@@ -129,12 +129,12 @@ class CustomerActivity : AppCompatActivity() {
 
     private fun deleteCustomerDialog(customer: Pet){
         AlertDialog.Builder(this)
-            .setTitle("Delete Customer")
-            .setMessage("Do you really want to delete this custumer?")
-            .setPositiveButton("Yes"){dialog, position->
+            .setTitle("Apagar Cliente")
+            .setMessage("Deseja realmente apagar esse cliente?")
+            .setPositiveButton("Sim"){dialog, position->
                 deleteCustomer(customer)
             }
-            .setNegativeButton("No"){dialog,position->
+            .setNegativeButton("Não"){dialog,position->
                 dialog.dismiss()
             }
             .create()
@@ -158,7 +158,7 @@ class CustomerActivity : AppCompatActivity() {
         if(intent.resolveActivity(packageManager) != null){
             startActivity(intent)
         }else{
-            Toast.makeText(this,"Not possible open Whatsapp", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Não foi possivel abrir o Whatsapp", Toast.LENGTH_SHORT).show()
         }
 
     }

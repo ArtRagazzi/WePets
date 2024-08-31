@@ -52,7 +52,7 @@ class UpdatePetActivity : AppCompatActivity() {
 
             binding.btnUpdate.setOnClickListener {
                 updateCustomer(customer.id!!)
-                Toast.makeText(this, "Updated customer", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Atualizado com Sucesso", Toast.LENGTH_SHORT).show()
 
                 finish()
             }
@@ -126,6 +126,6 @@ class UpdatePetActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Customer Update"
+        supportActionBar?.title = "Atualizar Cliente"
     }
 }

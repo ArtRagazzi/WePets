@@ -213,12 +213,12 @@ class RevenueFragment : Fragment() {
 
         context?.let {
             AlertDialog.Builder(it)
-                .setTitle("Delete Item")
-                .setMessage("Do you really want to delete this revenue item?")
-                .setPositiveButton("Yes") { dialog, position ->
+                .setTitle("Apagar Item")
+                .setMessage("Deseja realmente apagar esse item?")
+                .setPositiveButton("Sim") { dialog, position ->
                     deleteRevenueItem(revenue)
                 }
-                .setNegativeButton("No") { dialog, position ->
+                .setNegativeButton("Não") { dialog, position ->
                     dialog.dismiss()
                 }
                 .create()

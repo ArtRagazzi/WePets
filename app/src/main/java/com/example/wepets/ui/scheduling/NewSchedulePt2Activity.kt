@@ -133,7 +133,7 @@ class NewSchedulePt2Activity : AppCompatActivity() {
             binding.tfItemValue.error = null
 
             if (price.isEmpty()) {
-                binding.tfItemValue.error = "Value Cannot be Empty"
+                binding.tfItemValue.error = "Valor não pode estar vazio"
             }
             return false
         }
@@ -171,7 +171,7 @@ class NewSchedulePt2Activity : AppCompatActivity() {
 
             // Mostra um Toast na thread principal
             runOnUiThread {
-                Toast.makeText(this@NewSchedulePt2Activity, "Revenue OK", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@NewSchedulePt2Activity, "Item adicionado com Sucesso", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -181,7 +181,7 @@ class NewSchedulePt2Activity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             scheduleDao.insert(schedule)
         }
-        Toast.makeText(this, "Scheduled", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Agendado", Toast.LENGTH_SHORT).show()
         finish()
     }
 
@@ -195,6 +195,6 @@ class NewSchedulePt2Activity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Schedule Information"
+        supportActionBar?.title = "Informação do Agendamento"
     }
 }

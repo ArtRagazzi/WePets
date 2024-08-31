@@ -149,12 +149,12 @@ class SchedulingFragment : Fragment() {
 
         context?.let {
             AlertDialog.Builder(it)
-                .setTitle("Delete Item")
-                .setMessage("Do you really want to delete this Schedule item?")
-                .setPositiveButton("Yes") { dialog, position ->
+                .setTitle("Apagar Item")
+                .setMessage("Desejar realmente apagar esse item?")
+                .setPositiveButton("Sim") { dialog, position ->
                     deleteScheduleItem(schedule)
                 }
-                .setNegativeButton("No") { dialog, position ->
+                .setNegativeButton("Não") { dialog, position ->
                     dialog.dismiss()
                 }
                 .create()

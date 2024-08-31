@@ -78,7 +78,7 @@ class NewPetActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             petDao.insert(newPet)
         }
-        Toast.makeText(this, "Insert OK", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Inserido com Sucesso", Toast.LENGTH_SHORT).show()
         finish()
     }
     private fun checkFields(): Boolean {
@@ -122,16 +122,16 @@ class NewPetActivity : AppCompatActivity() {
             binding.tfOwnerPhone.error = null
 
             if (petName.isEmpty()) {
-                binding.tfPetName.error = "Name Cannot be Empty"
+                binding.tfPetName.error = "Nome não pode estar vazio"
             }
             if (petBreed.isEmpty()) {
-                binding.tfPetBreed.error = "Pet Breed Cannot be Empty"
+                binding.tfPetBreed.error = "Raça não pode estar vazio"
             }
             if (ownerName.isEmpty()) {
-                binding.tfOwnerName.error = "Owner Name Cannot be Empty"
+                binding.tfOwnerName.error = "Nome do Dono não pode estar vazio"
             }
             if (ownerPhone.isEmpty()) {
-                binding.tfOwnerPhone.error = "Owner Phone Cannot be Empty"
+                binding.tfOwnerPhone.error = "Telefone não pode estar vazio"
             }
             return false
         }
@@ -148,6 +148,6 @@ class NewPetActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Register New Pet"
+        supportActionBar?.title = "Registrar novo Pet"
     }
 }
