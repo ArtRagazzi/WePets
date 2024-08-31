@@ -35,7 +35,6 @@ class RevenueFragment : Fragment() {
 
     private lateinit var binding: FragmentRevenueBinding
     private lateinit var myDate: String
-
     private lateinit var adapter: RevenueAdapter
 
     // Instancias DB
@@ -137,6 +136,37 @@ class RevenueFragment : Fragment() {
         return dateFormat.format(calendar.time)
     }
 
+    fun calculateTotalRevenueMonth(dateChoose:String){
+        // Define o formato da data
+        val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())
+        // Parse a data fornecida
+        val date = dateFormat.parse(dateChoose) ?: return
+
+        // Cria uma instância de Calendar
+        val calendar = Calendar.getInstance()
+        calendar.time = date
+
+        // Recyclerview
+        CoroutineScope(Dispatchers.IO).launch {
+            val dateList = revenueDao.findByMonth(
+                startDate = dateChoose,
+                endDate = dateChoose
+            )
+            var sum = 0.0
+            dateList.forEach { cadaRevenue->
+                if(cadaRevenue.type == "Increase"){
+                    sum+=cadaRevenue.value
+                }else{
+                    sum-=cadaRevenue.value
+                }
+            }
+            withContext(Dispatchers.Main) {
+                binding.tvTotal.setText(sum.toString())
+            }
+        }
+
+    }
+
     fun updateDate() {
         // Define o formato da data
         val dateFormat = SimpleDateFormat("MM/yyyy", Locale.getDefault())
@@ -157,7 +187,7 @@ class RevenueFragment : Fragment() {
 
         // Atualiza o TextView com a data
         binding.tvDate.setText(myDate)
-
+        calculateTotalRevenueMonth(myDate)
         // Recyclerview
         CoroutineScope(Dispatchers.IO).launch {
             val revenueList = revenueDao.findByMonth(
