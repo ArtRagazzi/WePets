@@ -9,12 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wepets.adapter.RevenueAdapter
+import com.example.wepets.adapter.ScheduleAdapter
 import com.example.wepets.databinding.FragmentSchedulingBinding
 import com.example.wepets.db.dao.RevenueDao
 import com.example.wepets.db.dao.ScheduleDao
 import com.example.wepets.db.database.WePetsDatabase
+import com.example.wepets.ui.contact.CustomerActivity
 import com.example.wepets.ui.revenue.NewRevenueActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -24,7 +32,7 @@ class SchedulingFragment : Fragment() {
     private lateinit var binding: FragmentSchedulingBinding
 
     private val calendar = Calendar.getInstance()
-
+    private lateinit var adapter: ScheduleAdapter
 
     // Instancias DB
     private lateinit var db: WePetsDatabase
@@ -38,8 +46,9 @@ class SchedulingFragment : Fragment() {
     ): View? {
         binding = FragmentSchedulingBinding.inflate(inflater, container,false)
 
-        //Garente que o contexto Existe(Cuidado)
-        db = context?.let { WePetsDatabase.getDatabase(it) }!!
+
+        val context = requireContext() // Use requireContext() para garantir que o contexto não seja null
+        db = WePetsDatabase.getDatabase(context)
         scheduleDao = db.getScheduleDao
 
         binding.fabAdd.setOnClickListener {
@@ -53,6 +62,23 @@ class SchedulingFragment : Fragment() {
             showDatePicker()
         }
 
+        // Configurando RecyclerView
+        adapter = ScheduleAdapter({ customer ->
+            val intent = Intent(context, CustomerActivity::class.java).apply {
+                putExtra("customer", customer)
+            }
+            startActivity(intent)
+
+        },context)
+
+        binding.rvRevenue.adapter = adapter
+        binding.rvRevenue.layoutManager = LinearLayoutManager(context)
+        binding.rvRevenue.addItemDecoration(
+            DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+        )
+
+
+
 
         return binding.root
     }
@@ -60,6 +86,7 @@ class SchedulingFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         setupTodayDate()
+        setupScheduleDate(binding.tvDate.text.toString())
     }
 
     fun setupTodayDate(): Unit {
@@ -79,6 +106,7 @@ class SchedulingFragment : Fragment() {
                     val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                     val formattedDate = dateFormat.format(selectedDate.time)
                     binding.tvDate.text = formattedDate
+                    setupScheduleDate(binding.tvDate.text.toString())
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -86,6 +114,32 @@ class SchedulingFragment : Fragment() {
             )
         }
         datePickerDialog?.show()
+    }
+
+    fun setupScheduleDate(myDate:String){
+        // Define o formato da data
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        // Parse a data fornecida
+        val date = dateFormat.parse(myDate) ?: return
+
+        // Cria uma instância de Calendar
+        val calendar = java.util.Calendar.getInstance()
+        calendar.time = date
+
+        // Atualiza o TextView com a data
+        binding.tvDate.setText(myDate)
+
+        // Recyclerview
+        CoroutineScope(Dispatchers.IO).launch {
+            val scheduleList = scheduleDao.findByDay(
+                startDate = myDate,
+                endDate = myDate
+            )
+
+            withContext(Dispatchers.Main) {
+                adapter.addOnList(scheduleList)
+            }
+        }
     }
 
 

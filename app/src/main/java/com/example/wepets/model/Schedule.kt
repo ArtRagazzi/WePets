@@ -15,6 +15,7 @@ data class Schedule(
     val date:String,
     val time:String,
     val typeWork:String,
+    val img:Int,
     val value:Double
 
 ): Parcelable

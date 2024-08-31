@@ -19,10 +19,10 @@ interface ScheduleDao {
     @Delete
     fun delete(schedule: Schedule)
 
-    @Query("SELECT * FROM schedule ORDER BY date ASC ")
+    @Query("SELECT * FROM schedule ORDER BY time ASC ")
     fun findAll():List<Schedule>
 
 
-    @Query("SELECT * FROM schedule WHERE date >= :startDate AND date<= :endDate ORDER BY id")
+    @Query("SELECT * FROM schedule WHERE date >= :startDate AND date<= :endDate ORDER BY time ASC")
     fun findByDay(startDate: String, endDate: String): List<Schedule>
 }

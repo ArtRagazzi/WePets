@@ -28,10 +28,15 @@ class NewSchedulePt2Activity : AppCompatActivity() {
     }
     private lateinit var typeWork:String
     private lateinit var time:String
+    private lateinit var imgTypeWork:String
 
     // Instancias DB
     private val db by lazy {
         WePetsDatabase.getDatabase(applicationContext)
+    }
+
+    private val petDao: PetDao by lazy {
+        db.getPetDao
     }
     private val scheduleDao: ScheduleDao by lazy {
         db.getScheduleDao
@@ -39,9 +44,7 @@ class NewSchedulePt2Activity : AppCompatActivity() {
     private val revenueDao: RevenueDao by lazy {
         db.getRevenueDao
     }
-    private val petDao: PetDao by lazy {
-        db.getPetDao
-    }
+
 
 
 
@@ -67,7 +70,7 @@ class NewSchedulePt2Activity : AppCompatActivity() {
                 val idCustomer = intent.getStringExtra("customerId")
                 val date = intent.getStringExtra("date")
                 val value = binding.tiItemValue.text.toString()
-                val newSchedule = Schedule(null,idCustomer!!.toInt(),date!!,time,typeWork,value.toDouble())
+                val newSchedule = Schedule(null,idCustomer!!.toInt(),date!!,time,typeWork,imgTypeWork.toInt(),value.toDouble())
 
                 insertRevenue(idCustomer.toInt(), date, value)
                 insertSchedule(newSchedule)
@@ -111,12 +114,16 @@ class NewSchedulePt2Activity : AppCompatActivity() {
 
         if (binding.rbBath.isChecked) {
             typeWork = "Bath"
+            imgTypeWork = R.drawable.bath.toString()
         } else if (binding.rbCut.isChecked) {
             typeWork = "Cut"
+            imgTypeWork = R.drawable.scissor.toString()
         } else if (binding.rbSame.isChecked) {
             typeWork = "Same"
+            imgTypeWork=R.drawable.bathcut.toString()
         }else{
             typeWork = "Bath"
+            imgTypeWork = R.drawable.bath.toString()
         }
 
         if (price.isNotEmpty()) {
