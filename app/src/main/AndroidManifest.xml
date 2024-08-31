@@ -15,15 +15,24 @@
         android:theme="@style/Theme.WePets"
         tools:targetApi="31">
         <activity
+            android:name=".ui.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ui.scheduling.NewSchedulePt2Activity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.scheduling.NewScheduleActivity"
             android:exported="false"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.revenue.NewRevenueActivity"
             android:exported="false"
@@ -46,13 +55,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
