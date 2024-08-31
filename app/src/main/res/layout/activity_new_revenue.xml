@@ -36,7 +36,7 @@
             android:id="@+id/tiNameItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Item Name"
+            android:hint="@string/item_name"
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -55,7 +55,7 @@
             android:id="@+id/tiItemValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Item Price R$"
+            android:hint="@string/item_price_r"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +78,7 @@
             android:checked="true"
             android:drawableStart="@drawable/ic_up"
             android:drawableTint="@android:color/holo_green_dark"
-            android:text="Increase" />
+            android:text="@string/increase" />
 
         <RadioButton
             android:id="@+id/rbDecrease"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_down"
             android:drawableTint="@android:color/holo_red_dark"
-            android:text="Decrese" />
+            android:text="@string/decrese" />
 
 
     </RadioGroup>
@@ -96,7 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green"
-        android:text="Insert"
+        android:text="@string/insert"
         android:layout_marginHorizontal="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

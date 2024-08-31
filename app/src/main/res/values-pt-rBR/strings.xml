@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WePets</string>
+    <string name="pet_breed">Raça</string>
+    <string name="pet_size">Porte</string>
+    <string name="pet_gender">Genero</string>
+    <string name="owner_information">Informações do Dono</string>
+    <string name="delete">Apagar</string>
+    <string name="update">Atualizar</string>
+    <string name="image_url">URL Imagem</string>
+    <string name="pet_name">Nome do Pet</string>
+    <string name="size">Porte</string>
+    <string name="small">Pequeno</string>
+    <string name="medium">Medio</string>
+    <string name="big">Grande</string>
+    <string name="gender">Genero</string>
+    <string name="female">Feminino</string>
+    <string name="male">Masculino</string>
+    <string name="owner_name">Nome do Dono</string>
+    <string name="owner_phone">"Telefone "</string>
+    <string name="annotation">Anotações</string>
+    <string name="insert">Inserir</string>
+    <string name="item_name">Nome do Item</string>
+    <string name="item_price_r">Preço do Item R$</string>
+    <string name="increase">Entrada</string>
+    <string name="decrese">Saida</string>
+    <string name="pet_or_owner_name">Nome do Pet ou do Dono</string>
+    <string name="select_time">Selecione o Horário</string>
+    <string name="type_work">Tipo do Trabalho</string>
+    <string name="bath">Banho</string>
+    <string name="cut">Tosa</string>
+    <string name="same">Banho e Tosa</string>
+    <string name="job_price_r">Preço do Serviço R$</string>
+    <string name="to_schedule">Agendar</string>
+    <string name="total">Total :</string>
+    <string name="contact">Contatos</string>
+    <string name="revenue">Receita</string>
+    <string name="sheduling">Agendamento</string>
+</resources>

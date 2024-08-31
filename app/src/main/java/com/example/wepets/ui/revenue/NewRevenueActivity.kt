@@ -95,10 +95,10 @@ class NewRevenueActivity : AppCompatActivity() {
             binding.tfItemValue.error = null
 
             if (itemName.isEmpty()) {
-                binding.tfNameItem.error = "Name Cannot be Empty"
+                binding.tfNameItem.error = "Nome não pode ser vazio"
             }
             if (itemValue.isEmpty()) {
-                binding.tfItemValue.error = "Value Cannot be Empty"
+                binding.tfItemValue.error = "Valor não pode ser vazio"
             }
             return false
         }
@@ -116,7 +116,7 @@ class NewRevenueActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             revenueDao.insert(newItem)
         }
-        Toast.makeText(this, "Insert OK", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Inserido com Sucesso", Toast.LENGTH_SHORT).show()
         finish()
     }
 
@@ -130,6 +130,6 @@ class NewRevenueActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Add New Item Revenue"
+        supportActionBar?.title = "Adicionar novo item"
     }
 }

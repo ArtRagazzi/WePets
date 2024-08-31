@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_clock"
                 android:drawablePadding="8dp"
-                android:text="Select Time"
+                android:text="@string/select_time"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:drawableTint="@color/white"
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="24dp"
-                android:text="Type Work"
+                android:text="@string/type_work"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
@@ -95,19 +95,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
-                    android:text="Bath" />
+                    android:text="@string/bath" />
 
                 <RadioButton
                     android:id="@+id/rbCut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cut" />
+                    android:text="@string/cut" />
 
                 <RadioButton
                     android:id="@+id/rbSame"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Same" />
+                    android:text="@string/same" />
 
             </RadioGroup>
 
@@ -126,7 +126,7 @@
                     android:id="@+id/tiItemValue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Job Price R$"
+                    android:hint="@string/job_price_r"
                     android:inputType="numberDecimal" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,7 +134,7 @@
                 android:id="@+id/btnSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To Schedule"
+                android:text="@string/to_schedule"
                 android:backgroundTint="@color/green"
                 android:drawableTint="@color/white"
                 android:drawableEnd="@drawable/ic_save"

@@ -6,20 +6,20 @@
         android:id="@+id/item_calendar"
         android:icon="@drawable/ic_calendar"
         android:enabled="true"
-        android:title="Sheduling"
+        android:title="@string/sheduling"
         />
 
     <item
         android:id="@+id/item_money"
         android:icon="@drawable/ic_money"
         android:enabled="true"
-        android:title="Revenue"
+        android:title="@string/revenue"
         />
 
     <item
         android:id="@+id/item_pet"
         android:icon="@drawable/ic_pet"
         android:enabled="true"
-        android:title="Contact"
+        android:title="@string/contact"
         />
 </menu>

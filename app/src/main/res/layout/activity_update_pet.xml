@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
-            android:hint="Image URL"
+            android:hint="@string/image_url"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,7 @@
                 android:id="@+id/tiPetName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pet Name"
+                android:hint="@string/pet_name"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,7 +81,7 @@
                 android:id="@+id/tiPetBreed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pet Breed"
+                android:hint="@string/pet_breed"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
-            android:text="Size"
+            android:text="@string/size"
             android:textSize="20dp"
             android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold"
@@ -118,19 +118,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Small" />
+                android:text="@string/small" />
 
             <RadioButton
                 android:id="@+id/rbMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Medium" />
+                android:text="@string/medium" />
 
             <RadioButton
                 android:id="@+id/rbBig"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Big" />
+                android:text="@string/big" />
 
         </RadioGroup>
 
@@ -141,7 +141,9 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
-            android:text="Gender"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="@string/gender"
             android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -165,13 +167,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Female" />
+                android:text="@string/female" />
 
             <RadioButton
                 android:id="@+id/rbMale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Male" />
+                android:text="@string/male" />
 
         </RadioGroup>
 
@@ -181,7 +183,7 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
-            android:text="Owner Information"
+            android:text="@string/owner_information"
             android:textSize="28dp"
             android:textStyle="bold"
             android:textColor="@color/colorPrimaryDark"
@@ -206,7 +208,7 @@
                 android:id="@+id/tiOwnerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Owner Name"
+                android:hint="@string/owner_name"
                 android:inputType="textPersonName" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -225,7 +227,7 @@
                 android:id="@+id/tiOwnerPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Owner Phone"
+                android:hint="@string/owner_phone"
                 android:inputType="number" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -235,7 +237,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
-            android:hint="Annotation"
+            android:hint="@string/annotation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -247,7 +249,7 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="16dp"
-            android:text="Update"
+            android:text="@string/update"
             android:backgroundTint="@color/green"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

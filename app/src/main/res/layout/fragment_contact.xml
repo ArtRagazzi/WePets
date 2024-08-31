@@ -25,7 +25,7 @@
                 android:id="@+id/tiCustomerSearch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Pet or Owner Name"
+                android:hint="@string/pet_or_owner_name"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 

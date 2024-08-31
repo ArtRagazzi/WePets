@@ -104,6 +104,6 @@ class NewScheduleActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
         // Definir o título da Activity na Toolbar
-        supportActionBar?.title = "Select the Customer"
+        supportActionBar?.title = "Selecione o Cliente"
     }
 }
