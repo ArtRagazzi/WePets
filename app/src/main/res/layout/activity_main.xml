@@ -27,7 +27,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_itens" />
+        app:menu="@menu/bottom_nav_itens"
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorPrimaryLight"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/glScreen"

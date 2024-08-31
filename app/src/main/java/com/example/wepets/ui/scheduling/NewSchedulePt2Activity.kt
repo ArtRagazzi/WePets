@@ -77,7 +77,7 @@ class NewSchedulePt2Activity : AppCompatActivity() {
             }
         }
 
-        binding.tvSelectTime.setOnClickListener {
+        binding.btnSelectTime.setOnClickListener {
             showTimePicker()
         }
 

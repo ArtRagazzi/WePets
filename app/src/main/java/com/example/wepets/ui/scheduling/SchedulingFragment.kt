@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,8 @@ import com.example.wepets.databinding.FragmentSchedulingBinding
 import com.example.wepets.db.dao.RevenueDao
 import com.example.wepets.db.dao.ScheduleDao
 import com.example.wepets.db.database.WePetsDatabase
+import com.example.wepets.model.Revenue
+import com.example.wepets.model.Schedule
 import com.example.wepets.ui.contact.CustomerActivity
 import com.example.wepets.ui.revenue.NewRevenueActivity
 import kotlinx.coroutines.CoroutineScope
@@ -69,7 +72,7 @@ class SchedulingFragment : Fragment() {
             }
             startActivity(intent)
 
-        },context)
+        },{schedule -> deleteScheduleDialog(schedule) },context)
 
         binding.rvRevenue.adapter = adapter
         binding.rvRevenue.layoutManager = LinearLayoutManager(context)
@@ -140,6 +143,33 @@ class SchedulingFragment : Fragment() {
                 adapter.addOnList(scheduleList)
             }
         }
+    }
+
+    private fun deleteScheduleDialog(schedule: Schedule) {
+
+        context?.let {
+            AlertDialog.Builder(it)
+                .setTitle("Delete Item")
+                .setMessage("Do you really want to delete this Schedule item?")
+                .setPositiveButton("Yes") { dialog, position ->
+                    deleteScheduleItem(schedule)
+                }
+                .setNegativeButton("No") { dialog, position ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+        }
+    }
+
+    private fun deleteScheduleItem(schedule: Schedule) {
+        CoroutineScope(Dispatchers.IO).launch {
+            scheduleDao.delete(schedule)
+            withContext(Dispatchers.Main){
+                setupScheduleDate(binding.tvDate.text.toString())
+            }
+        }
+
     }
 
 

@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.wepets.R
 import com.example.wepets.adapter.CustomerAdapter
 import com.example.wepets.adapter.RevenueAdapter
 import com.example.wepets.databinding.FragmentRevenueBinding
@@ -161,7 +163,12 @@ class RevenueFragment : Fragment() {
                 }
             }
             withContext(Dispatchers.Main) {
-                binding.tvTotal.setText(sum.toString())
+                if (sum >= 0) {
+                    binding.tvTotal.setTextColor(ContextCompat.getColor(requireContext(), R.color.green))
+                } else {
+                    binding.tvTotal.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
+                }
+                binding.tvTotal.text = sum.toString()
             }
         }
 

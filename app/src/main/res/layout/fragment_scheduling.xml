@@ -41,6 +41,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="14/03/2024"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:drawableTint="@color/colorPrimaryLight"
                     android:textStyle="bold"
                     android:drawablePadding="12dp"
                     android:drawableEnd="@drawable/ic_calendar"/>
@@ -62,6 +64,8 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
+            android:backgroundTint="@color/colorPrimary"
+            app:tint="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

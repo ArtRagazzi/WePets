@@ -16,7 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ScheduleAdapter(private val onItemClickListener:(Pet) -> Unit ,context: Context):RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
+class ScheduleAdapter(private val onItemClickListener:(Pet) -> Unit ,private val onItemClickDeleteListener:(Schedule) -> Unit ,context: Context):RecyclerView.Adapter<ScheduleAdapter.ViewHolder>() {
 
     private var schedules = emptyList<Schedule>()
     // Método para atualizar a lista
@@ -54,7 +54,7 @@ class ScheduleAdapter(private val onItemClickListener:(Pet) -> Unit ,context: Co
 
             scheduleItemBinding.tvTime.setText(schedule.time)
             scheduleItemBinding.tvValue.setText(schedule.value.toString())
-
+            scheduleItemBinding.ibDelete.setOnClickListener { onItemClickDeleteListener(schedule) }
 
         }
     }

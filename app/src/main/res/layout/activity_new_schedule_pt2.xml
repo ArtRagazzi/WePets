@@ -40,14 +40,17 @@
             android:layout_margin="8dp">
 
 
-            <TextView
-                android:id="@+id/tvSelectTime"
+            <Button
+                android:id="@+id/btnSelectTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_clock"
                 android:drawablePadding="8dp"
                 android:text="Select Time"
-                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:drawableTint="@color/white"
+                android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,10 +60,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginBottom="5dp"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tvSelectTime"
-                app:layout_constraintStart_toEndOf="@+id/tvSelectTime"
-                app:layout_constraintTop_toTopOf="@+id/tvSelectTime"
+                android:textSize="26sp"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintBottom_toBottomOf="@+id/btnSelectTime"
+                app:layout_constraintStart_toEndOf="@+id/btnSelectTime"
+                app:layout_constraintTop_toTopOf="@+id/btnSelectTime"
                 tools:text="12:00" />
 
             <TextView
@@ -69,9 +73,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="24dp"
                 android:text="Type Work"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSelectTime" />
+                app:layout_constraintTop_toBottomOf="@+id/btnSelectTime" />
 
             <RadioGroup
                 android:id="@+id/rgTypeWork"
@@ -129,6 +135,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="To Schedule"
+                android:backgroundTint="@color/green"
+                android:drawableTint="@color/white"
                 android:drawableEnd="@drawable/ic_save"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
