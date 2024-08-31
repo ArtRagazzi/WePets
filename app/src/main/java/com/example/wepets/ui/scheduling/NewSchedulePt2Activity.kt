@@ -11,9 +11,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.wepets.R
 import com.example.wepets.databinding.ActivityNewSchedulePt2Binding
 import com.example.wepets.db.dao.PetDao
+import com.example.wepets.db.dao.RevenueDao
 import com.example.wepets.db.dao.ScheduleDao
 import com.example.wepets.db.database.WePetsDatabase
 import com.example.wepets.model.Pet
+import com.example.wepets.model.Revenue
 import com.example.wepets.model.Schedule
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,6 +35,12 @@ class NewSchedulePt2Activity : AppCompatActivity() {
     }
     private val scheduleDao: ScheduleDao by lazy {
         db.getScheduleDao
+    }
+    private val revenueDao: RevenueDao by lazy {
+        db.getRevenueDao
+    }
+    private val petDao: PetDao by lazy {
+        db.getPetDao
     }
 
 
@@ -60,6 +68,8 @@ class NewSchedulePt2Activity : AppCompatActivity() {
                 val date = intent.getStringExtra("date")
                 val value = binding.tiItemValue.text.toString()
                 val newSchedule = Schedule(null,idCustomer!!.toInt(),date!!,time,typeWork,value.toDouble())
+
+                insertRevenue(idCustomer.toInt(), date, value)
                 insertSchedule(newSchedule)
             }
         }
@@ -119,6 +129,43 @@ class NewSchedulePt2Activity : AppCompatActivity() {
                 binding.tfItemValue.error = "Value Cannot be Empty"
             }
             return false
+        }
+    }
+    fun convertDate(dateString: String): String {
+        // Define o formato de entrada e saída
+        val inputFormat = SimpleDateFormat("dd/MM/yyyy")
+        val outputFormat = SimpleDateFormat("MM/yyyy")
+
+        // Converte a string para uma data
+        val date = inputFormat.parse(dateString)
+
+        // Retorna a data no formato desejado
+        return outputFormat.format(date!!)
+    }
+
+    private fun insertRevenue(customerId: Int, date: String, value: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            // Busca o cliente na thread IO
+            val customer = petDao.findById(customerId)
+            val image = R.drawable.ic_increase.toString()
+
+            // Cria o novo item de receita
+            val newRevenueItem = Revenue(
+                null,
+                name = "$typeWork ${customer.namePet}",
+                type = "Increase",
+                date = convertDate(date),
+                value = value.toDouble(),
+                image = image.toInt()
+            )
+
+            // Insere a nova receita no banco de dados
+            revenueDao.insert(newRevenueItem)
+
+            // Mostra um Toast na thread principal
+            runOnUiThread {
+                Toast.makeText(this@NewSchedulePt2Activity, "Revenue OK", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
