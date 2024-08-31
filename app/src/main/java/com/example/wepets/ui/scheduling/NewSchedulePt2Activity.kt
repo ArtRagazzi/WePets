@@ -113,16 +113,16 @@ class NewSchedulePt2Activity : AppCompatActivity() {
 
 
         if (binding.rbBath.isChecked) {
-            typeWork = "Bath"
+            typeWork = "Banho"
             imgTypeWork = R.drawable.bath.toString()
         } else if (binding.rbCut.isChecked) {
-            typeWork = "Cut"
+            typeWork = "Tosa"
             imgTypeWork = R.drawable.scissor.toString()
         } else if (binding.rbSame.isChecked) {
-            typeWork = "Same"
+            typeWork = "Banho e Tosa"
             imgTypeWork=R.drawable.bathcut.toString()
         }else{
-            typeWork = "Bath"
+            typeWork = "Banho"
             imgTypeWork = R.drawable.bath.toString()
         }
 

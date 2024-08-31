@@ -45,7 +45,7 @@
                 android:layout_height="150dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="8dp"
-                android:elevation="5dp"
+                android:elevation="4dp"
                 app:cardCornerRadius="40dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -197,11 +197,13 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_wpp"
                 android:inputType="number"
+                android:drawablePadding="8dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/txtOwnerName"
-                app:layout_constraintStart_toStartOf="@+id/ivPetSex"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtOwnerName"
                 app:layout_constraintTop_toTopOf="@+id/txtOwnerName"
                 tools:text="1999138-2999" />
 

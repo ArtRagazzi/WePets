@@ -41,7 +41,7 @@ class ScheduleAdapter(private val onItemClickListener:(Pet) -> Unit ,private val
 
                 // Atualiza a UI com os dados do cliente
                 customer?.let {
-                    scheduleItemBinding.tvPetName.setText(it.namePet)
+                    scheduleItemBinding.tvPetName.setText(it.namePet.replaceFirstChar { it.uppercase() })
                     scheduleItemBinding.root.setOnClickListener { onItemClickListener(customer) }
                 }
             }
