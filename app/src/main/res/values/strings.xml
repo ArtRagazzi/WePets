@@ -35,4 +35,5 @@
     <string name="contact">Contact</string>
     <string name="revenue">Revenue</string>
     <string name="sheduling">Sheduling</string>
+    <string name="despesas">Despesas\n</string>
 </resources>

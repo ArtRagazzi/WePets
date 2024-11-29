@@ -74,7 +74,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:layout_marginTop="4dp"
-                    app:layout_constraintBottom_toTopOf="@id/txtTotal"
+                    app:layout_constraintBottom_toTopOf="@id/fabAdd"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDate" />
@@ -94,30 +94,79 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent" />
 
+
+                <TextView
+                    android:id="@+id/txtDespesas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Saida: "
+                    android:textColor="@color/dark_red"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/fabAdd" />
+
+                <TextView
+                    android:id="@+id/tvDespesas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtDespesas"
+                    app:layout_constraintStart_toEndOf="@+id/txtDespesas"
+                    app:layout_constraintTop_toTopOf="@+id/txtDespesas"
+                    tools:text="200,00" />
+
+
+                <TextView
+                    android:id="@+id/txtEntradas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Entrada: "
+                    android:textColor="@color/green"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDespesas" />
+
+                <TextView
+                    android:id="@+id/tvEntradas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtEntradas"
+                    app:layout_constraintEnd_toEndOf="@+id/tvDespesas"
+                    app:layout_constraintStart_toStartOf="@+id/tvDespesas"
+                    app:layout_constraintTop_toTopOf="@+id/txtEntradas"
+                    tools:text="200,00" />
+
+
                 <TextView
                     android:id="@+id/txtTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="@string/total"
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEntradas" />
 
                 <TextView
                     android:id="@+id/tvTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="8dp"
-                    tools:text="200,00"
                     android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/txtTotal"
-                    app:layout_constraintTop_toTopOf="@+id/txtTotal" />
+                    app:layout_constraintBottom_toBottomOf="@+id/txtTotal"
+                    app:layout_constraintEnd_toEndOf="@+id/tvEntradas"
+                    app:layout_constraintStart_toStartOf="@+id/tvEntradas"
+                    app:layout_constraintTop_toTopOf="@+id/txtTotal"
+                    tools:text="200,00" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

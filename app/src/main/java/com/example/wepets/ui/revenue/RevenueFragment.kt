@@ -155,11 +155,15 @@ class RevenueFragment : Fragment() {
                 endDate = dateChoose
             )
             var sum = 0.0
+            var increase = 0.0
+            var decrease = 0.0
             dateList.forEach { cadaRevenue->
                 if(cadaRevenue.type == "Increase"){
                     sum+=cadaRevenue.value
+                    increase+=cadaRevenue.value
                 }else{
                     sum-=cadaRevenue.value
+                    decrease+=cadaRevenue.value
                 }
             }
             withContext(Dispatchers.Main) {
@@ -169,6 +173,8 @@ class RevenueFragment : Fragment() {
                     binding.tvTotal.setTextColor(ContextCompat.getColor(requireContext(), R.color.red))
                 }
                 binding.tvTotal.text = sum.toString()
+                binding.tvEntradas.text = increase.toString()
+                binding.tvDespesas.text = decrease.toString()
             }
         }
 
