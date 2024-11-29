@@ -104,6 +104,7 @@
                 android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/labelPetBreed"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvNotes"
                 app:layout_constraintTop_toTopOf="@+id/labelPetBreed"
                 tools:text="Vira Lata" />
@@ -173,6 +174,7 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="28sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/labelPetSex"
                 app:layout_constraintTop_toBottomOf="@+id/labelPetSex" />
 
@@ -187,7 +189,8 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/labelPetSex"
+                app:layout_constraintEnd_toEndOf="@+id/tvOwnerLabel"
+                app:layout_constraintStart_toStartOf="@+id/tvOwnerLabel"
                 app:layout_constraintTop_toBottomOf="@+id/tvOwnerLabel"
                 tools:text="Artur Oliveira" />
 
@@ -196,15 +199,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_wpp"
-                android:inputType="number"
                 android:drawablePadding="8dp"
+                android:inputType="number"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/txtOwnerName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtOwnerName"
-                app:layout_constraintTop_toTopOf="@+id/txtOwnerName"
+                app:layout_constraintEnd_toEndOf="@+id/txtOwnerName"
+                app:layout_constraintStart_toStartOf="@+id/txtOwnerName"
+                app:layout_constraintTop_toBottomOf="@+id/txtOwnerName"
                 tools:text="1999138-2999" />
 
             <Button
@@ -218,7 +220,7 @@
                 android:text="@string/delete"
                 app:layout_constraintEnd_toStartOf="@+id/btnUpdate"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtOwnerPhone" />
 
@@ -242,10 +244,24 @@
                 android:layout_height="84dp"
                 android:textColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/txtPetName"
                 app:layout_constraintTop_toBottomOf="@+id/txtPetName"
                 tools:text="Alegico a Tesouras e shampoos" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabEditPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="Edit Photo"
+                android:src="@drawable/ic_edit"
+                android:backgroundTint="@color/white"
+                android:drawableEnd="@drawable/ic_edit"
+                app:tint="@color/light_orange"
+                app:layout_constraintBottom_toBottomOf="@+id/cardView"
+                app:layout_constraintEnd_toEndOf="@+id/cardView" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.cardview.widget.CardView>
 
 

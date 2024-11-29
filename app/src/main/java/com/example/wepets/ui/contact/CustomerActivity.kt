@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -19,6 +20,7 @@ import com.example.wepets.model.Pet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.io.File
 
 class CustomerActivity : AppCompatActivity() {
 
@@ -32,6 +34,16 @@ class CustomerActivity : AppCompatActivity() {
     }
     private val petDao: PetDao by lazy {
         db.getPetDao
+    }
+
+    private val selectImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        uri?.let {
+            // Atualiza a imagem na interface
+            binding.ivProfile.setImageURI(it)
+
+            // Salva o URI no banco de dados
+            updatePhotoUrl(it)
+        } ?: Toast.makeText(this, "Nenhuma imagem selecionada", Toast.LENGTH_SHORT).show()
     }
 
 
@@ -75,6 +87,16 @@ class CustomerActivity : AppCompatActivity() {
 
         binding.txtOwnerPhone.setOnClickListener {
             openWhatsapp(binding.txtOwnerPhone.text.toString())
+        }
+
+
+
+
+
+
+
+        binding.fabEditPhoto.setOnClickListener {
+            editPhoto()
         }
 
 
@@ -161,6 +183,47 @@ class CustomerActivity : AppCompatActivity() {
             Toast.makeText(this,"Não foi possivel abrir o Whatsapp", Toast.LENGTH_SHORT).show()
         }
 
+    }
+
+    private fun editPhoto() {
+        // Inicia o seletor de imagens
+        selectImageLauncher.launch("image/*")
+    }
+
+    private fun updatePhotoUrl(uri: Uri) {
+        val customer = intent.getParcelableExtra<Pet>("customer")
+        customer?.let { pet ->
+            val photoPath = saveImageToInternalStorage(uri)
+
+            if (photoPath != null) {
+                val updatedPet = pet.copy(photoUrl = photoPath)
+                CoroutineScope(Dispatchers.IO).launch {
+                    petDao.update(updatedPet)
+                }
+                Toast.makeText(this, "Foto atualizada com sucesso!", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Erro ao salvar a foto", Toast.LENGTH_SHORT).show()
+            }
+        } ?: Toast.makeText(this, "Erro ao atualizar a foto", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun saveImageToInternalStorage(uri: Uri): String? {
+        return try {
+            val inputStream = contentResolver.openInputStream(uri) ?: return null
+            val file = File(filesDir, "pet_${System.currentTimeMillis()}.jpg")
+            val outputStream = file.outputStream()
+
+            inputStream.use { input ->
+                outputStream.use { output ->
+                    input.copyTo(output)
+                }
+            }
+
+            file.absolutePath
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 
 

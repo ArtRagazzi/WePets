@@ -13,9 +13,9 @@
     <string name="small">Pequeno</string>
     <string name="medium">Medio</string>
     <string name="big">Grande</string>
-    <string name="gender">Genero</string>
-    <string name="female">Feminino</string>
-    <string name="male">Masculino</string>
+    <string name="gender">Sexo</string>
+    <string name="female">Fêmea</string>
+    <string name="male">Macho</string>
     <string name="owner_name">Nome do Dono</string>
     <string name="owner_phone">"Telefone "</string>
     <string name="annotation">Anotações</string>
