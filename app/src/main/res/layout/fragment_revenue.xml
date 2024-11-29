@@ -112,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="42dp"
                     app:layout_constraintBottom_toBottomOf="@+id/txtDespesas"
                     app:layout_constraintStart_toEndOf="@+id/txtDespesas"
                     app:layout_constraintTop_toTopOf="@+id/txtDespesas"
