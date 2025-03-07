@@ -24,6 +24,9 @@ WePets é um aplicativo mobile desenvolvido como Trabalho de Conclusão de Curso
     Conecte um dispositivo ou inicie um emulador Android.
     Compile e execute o aplicativo.
 
-📷 Imagem do APP 
+📷 Imagem do Fluxo do Aplicativo 
+![image](https://github.com/user-attachments/assets/5719b064-2bf2-4f17-b126-1ba785174ebf)
+![image](https://github.com/user-attachments/assets/e2a2282d-f565-481a-a7e8-8d8cbc37b3a3)
+![image](https://github.com/user-attachments/assets/738354ee-7406-4a95-a07d-9af9e56f6592)
 
-![Imagem_WePets](https://github.com/user-attachments/assets/b992627c-f55a-4607-ae15-3adebc6af4cf)
+
